@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>java.util.stream.ReduceOps.ReduceOp</OriginalElement>
+  <nodes>
+    <node x="122.875" y="0.0">java.util.function.Consumer</node>
+    <node x="298.25" y="320.0">java.util.stream.ForEachOps.ForEachOp</node>
+    <node x="47.25" y="320.0">java.util.stream.ReduceOps.ReduceOp</node>
+    <node x="176.25" y="320.0">java.util.stream.MatchOps.MatchOp</node>
+    <node x="167.375" y="160.0">java.util.stream.TerminalSink</node>
+    <node x="0.0" y="240.0">java.util.stream.ReduceOps.AccumulatingSink</node>
+    <node x="169.25" y="240.0">java.util.stream.TerminalOp</node>
+    <node x="232.375" y="80.0">java.util.function.Supplier</node>
+    <node x="140.375" y="80.0">java.util.stream.Sink</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="java.util.stream.TerminalSink" target="java.util.function.Supplier">
+      <point x="30.5" y="-15.0" />
+      <point x="258.875" y="135.0" />
+      <point x="280.375" y="135.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="java.util.stream.TerminalSink" target="java.util.stream.Sink">
+      <point x="-30.5" y="-15.0" />
+      <point x="197.875" y="135.0" />
+      <point x="176.375" y="135.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="java.util.stream.ForEachOps.ForEachOp" target="java.util.stream.TerminalSink">
+      <point x="28.0" y="-15.0" />
+      <point x="382.25" y="215.0" />
+      <point x="258.875" y="215.0" />
+      <point x="30.5" y="15.0" />
+    </edge>
+    <edge source="java.util.stream.MatchOps.MatchOp" target="java.util.stream.TerminalOp">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="java.util.stream.ReduceOps.ReduceOp" target="java.util.stream.TerminalOp">
+      <point x="27.25" y="-15.0" />
+      <point x="129.0" y="295.0" />
+      <point x="188.58333333333334" y="295.0" />
+      <point x="-38.66666666666666" y="15.0" />
+    </edge>
+    <edge source="java.util.stream.ForEachOps.ForEachOp" target="java.util.stream.TerminalOp">
+      <point x="-28.0" y="-15.0" />
+      <point x="326.25" y="295.0" />
+      <point x="265.91666666666663" y="295.0" />
+      <point x="38.66666666666663" y="15.0" />
+    </edge>
+    <edge source="java.util.stream.Sink" target="java.util.function.Consumer">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="java.util.stream.ReduceOps.AccumulatingSink" target="java.util.stream.TerminalSink">
+      <point x="0.0" y="-15.0" />
+      <point x="74.5" y="215.0" />
+      <point x="197.875" y="215.0" />
+      <point x="-30.5" y="15.0" />
+    </edge>
+    <edge source="java.util.stream.ReduceOps.ReduceOp" target="java.util.stream.ReduceOps.AccumulatingSink">
+      <point x="-27.25" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="143.0" y="55.0" />
+  <SelectedNodes>
+    <node>java.util.stream.MatchOps.MatchOp</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
