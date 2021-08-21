@@ -9,6 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <packaging>jar</packaging>
+
     <artifactId>java8-lab</artifactId>
 
     <name>java8-lab</name>
@@ -17,8 +19,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.7</maven.compiler.source>
-        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.source>1.9</maven.compiler.source>
+        <maven.compiler.target>1.9</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -27,6 +29,12 @@
             <artifactId>junit</artifactId>
             <version>4.11</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.15</version>
         </dependency>
     </dependencies>
 

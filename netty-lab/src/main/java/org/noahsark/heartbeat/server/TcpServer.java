@@ -27,7 +27,7 @@ public class TcpServer {
             ChannelFuture future = bootstrap.bind(port).sync();
 
             System.out.println("Server start listen at " + port);
-            future.channel().closeFuture().sync();
+            // future.channel().closeFuture().sync();
         } catch (Exception e) {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();

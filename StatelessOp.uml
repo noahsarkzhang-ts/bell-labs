@@ -3,78 +3,71 @@
   <ID>JAVA</ID>
   <OriginalElement>java.util.stream.ReferencePipeline.StatelessOp</OriginalElement>
   <nodes>
-    <node x="14.0" y="400.0">java.util.stream.SortedOps.OfRef</node>
-    <node x="266.0" y="320.0">java.util.stream.ReferencePipeline.Head</node>
-    <node x="72.95833333333334" y="160.0">java.util.stream.Stream</node>
-    <node x="0.0" y="320.0">java.util.stream.ReferencePipeline.StatefulOp</node>
-    <node x="112.00000000000001" y="240.0">java.util.stream.ReferencePipeline</node>
-    <node x="124.25000000000001" y="80.0">java.util.stream.BaseStream</node>
-    <node x="181.95833333333334" y="160.0">java.util.stream.AbstractPipeline</node>
-    <node x="261.25" y="80.0">java.util.stream.PipelineHelper</node>
-    <node x="129.0" y="320.0">java.util.stream.ReferencePipeline.StatelessOp</node>
-    <node x="116.75000000000001" y="0.0">java.lang.AutoCloseable</node>
+    <node x="62.25" y="160.0">java.util.stream.Stream</node>
+    <node x="137.0" y="320.0">java.util.stream.ReferencePipeline.Head</node>
+    <node x="236.0" y="320.0">java.util.stream.ReferencePipeline.StatefulOp</node>
+    <node x="115.69444444444443" y="80.0">java.util.stream.BaseStream</node>
+    <node x="101.0" y="240.0">java.util.stream.ReferencePipeline</node>
+    <node x="171.25" y="160.0">java.util.stream.AbstractPipeline</node>
+    <node x="252.69444444444443" y="80.0">java.util.stream.PipelineHelper</node>
+    <node x="0.0" y="320.0">java.util.stream.ReferencePipeline.StatelessOp</node>
+    <node x="108.1944444444444" y="0.0">java.lang.AutoCloseable</node>
   </nodes>
   <notes />
   <edges>
     <edge source="java.util.stream.Stream" target="java.util.stream.BaseStream">
       <point x="0.0" y="-15.0" />
-      <point x="117.45833333333334" y="135.0" />
-      <point x="143.75" y="135.0" />
+      <point x="106.75" y="135.0" />
+      <point x="135.19444444444443" y="135.0" />
       <point x="-39.0" y="15.0" />
     </edge>
     <edge source="java.util.stream.ReferencePipeline.Head" target="java.util.stream.ReferencePipeline">
       <point x="0.0" y="-15.0" />
-      <point x="305.5" y="295.0" />
-      <point x="237.83333333333337" y="295.0" />
-      <point x="50.33333333333337" y="15.0" />
-    </edge>
-    <edge source="java.util.stream.ReferencePipeline.StatelessOp" target="java.util.stream.ReferencePipeline">
-      <point x="0.0" y="-15.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.stream.SortedOps.OfRef" target="java.util.stream.ReferencePipeline.StatefulOp">
-      <point x="0.0" y="-15.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.stream.BaseStream" target="java.lang.AutoCloseable">
-      <point x="0.0" y="-15.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.stream.ReferencePipeline" target="java.util.stream.AbstractPipeline">
-      <point x="37.75" y="-15.0" />
-      <point x="225.25" y="215.0" />
-      <point x="252.45833333333334" y="215.0" />
       <point x="0.0" y="15.0" />
     </edge>
     <edge source="java.util.stream.AbstractPipeline" target="java.util.stream.BaseStream">
       <point x="0.0" y="-15.0" />
-      <point x="252.45833333333334" y="135.0" />
-      <point x="221.75" y="135.0" />
+      <point x="241.75" y="135.0" />
+      <point x="213.19444444444443" y="135.0" />
       <point x="39.0" y="15.0" />
     </edge>
-    <edge source="java.util.stream.AbstractPipeline" target="java.util.stream.PipelineHelper">
-      <point x="47.0" y="-15.0" />
-      <point x="299.45833333333337" y="135.0" />
-      <point x="327.25" y="135.0" />
+    <edge source="java.util.stream.BaseStream" target="java.lang.AutoCloseable">
+      <point x="-2.8421709430404007E-14" y="-15.0" />
       <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="java.util.stream.ReferencePipeline.StatefulOp" target="java.util.stream.ReferencePipeline">
-      <point x="0.0" y="-15.0" />
-      <point x="54.5" y="295.0" />
-      <point x="137.16666666666669" y="295.0" />
-      <point x="-50.33333333333334" y="15.0" />
     </edge>
     <edge source="java.util.stream.ReferencePipeline" target="java.util.stream.Stream">
       <point x="-37.75" y="-15.0" />
-      <point x="149.75" y="215.0" />
-      <point x="117.45833333333334" y="215.0" />
+      <point x="138.75" y="215.0" />
+      <point x="106.75" y="215.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="java.util.stream.ReferencePipeline.StatelessOp" target="java.util.stream.ReferencePipeline">
+      <point x="0.0" y="-15.0" />
+      <point x="58.5" y="295.0" />
+      <point x="126.16666666666666" y="295.0" />
+      <point x="-50.33333333333334" y="15.0" />
+    </edge>
+    <edge source="java.util.stream.ReferencePipeline.StatefulOp" target="java.util.stream.ReferencePipeline">
+      <point x="0.0" y="-15.0" />
+      <point x="290.5" y="295.0" />
+      <point x="226.83333333333337" y="295.0" />
+      <point x="50.33333333333337" y="15.0" />
+    </edge>
+    <edge source="java.util.stream.ReferencePipeline" target="java.util.stream.AbstractPipeline">
+      <point x="37.75" y="-15.0" />
+      <point x="214.25" y="215.0" />
+      <point x="241.75" y="215.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="java.util.stream.AbstractPipeline" target="java.util.stream.PipelineHelper">
+      <point x="47.0" y="-15.0" />
+      <point x="288.75" y="135.0" />
+      <point x="318.69444444444446" y="135.0" />
       <point x="0.0" y="15.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="-373.5" y="-20.5" />
-  <SelectedNodes>
-    <node>java.util.stream.SortedOps.OfRef</node>
-  </SelectedNodes>
+  <settings layout="Hierarchic Group" zoom="1.0" x="183.0" y="215.0" />
+  <SelectedNodes />
   <Categories />
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>

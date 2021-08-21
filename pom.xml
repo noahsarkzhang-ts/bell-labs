@@ -12,6 +12,12 @@
         <module>algorithm-lab</module>
         <module>netty-lab</module>
         <module>java8-lab</module>
+        <module>jaeger-lab</module>
+        <module>jaeger-rpc-lab</module>
+        <module>skywalking-lab</module>
+        <module>rocketmq-lab</module>
+        <module>influxdb-lab</module>
+        <module>metric-lab</module>
     </modules>
 
     <name>bell-labs</name>
