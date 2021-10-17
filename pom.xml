@@ -18,6 +18,7 @@
         <module>rocketmq-lab</module>
         <module>influxdb-lab</module>
         <module>metric-lab</module>
+        <module>protoc-lab</module>
     </modules>
 
     <name>bell-labs</name>
