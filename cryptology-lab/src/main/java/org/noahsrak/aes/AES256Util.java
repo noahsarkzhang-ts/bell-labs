@@ -1,4 +1,4 @@
-package org.noahsrak.encryption;
+package org.noahsrak.aes;
 
 import org.apache.commons.codec.binary.Hex;
 

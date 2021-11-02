@@ -1,0 +1,20 @@
+agent:
+  close: false
+  serverAddr: 192.168.7.115
+  namespace: dev
+  pre:
+    type: nacos
+    namespace: dev
+    group: com.hst.devops
+    dataId: public-ip
+  config:
+    type: nacos
+    namespace: dev
+    group: com.hst.boss
+    dataId: dal-app
+    file: e:/logs/config/dal.yaml
+
+logging:
+  config: classpath:config/logback.xml
+  file:
+    name: logs/agent.log
