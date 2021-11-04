@@ -15,6 +15,7 @@ import reactor.core.Disposable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import static org.noahsrak.rsocket.support.Constants.DATA_STREAM_NAME;
@@ -141,7 +142,7 @@ public class Server {
     public static void main(String[] args) throws InterruptedException {
         new Server();
 
-        TimeUnit.HOURS.sleep(12);
+        new CountDownLatch(1).await(10,TimeUnit.HOURS);
     }
 
 }

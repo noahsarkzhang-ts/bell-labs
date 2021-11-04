@@ -23,6 +23,8 @@
         <module>rsocket-lab</module>
         <module>cryptology-lab</module>
         <module>compress-lab</module>
+        <module>grpc-lab</module>
+        <module>dubbo-lab</module>
     </modules>
 
     <name>bell-labs</name>
