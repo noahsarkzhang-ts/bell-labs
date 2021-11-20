@@ -32,35 +32,37 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 /**
- * A simple client that requests a greeting from the {@link HelloWorldServer}.
+ * gRPC 客户端实例
+ *
+ * @author zhangxt
+ * @date 2021/11/16 20:36
  */
 public class HelloWorldClient {
     private static final Logger logger = LoggerFactory.getLogger(HelloWorldClient.class.getName());
 
+    // 同步客户端(stub),由 gRPC 编译器生成
     private final GreeterGrpc.GreeterBlockingStub blockingStub;
+
+    // 异步客户端(stub),由 gRPC 编译器生成
     private final GreeterGrpc.GreeterStub stub;
 
-    private StdoutStreamObserver<HelloReply> observer = new StdoutStreamObserver<>("HelloWordClient");
-
     /**
-     * Construct client for accessing HelloWorld server using the existing channel.
+     * 构造函数
+     * @param channel gRPC channel
      */
     public HelloWorldClient(Channel channel) {
-        // 'channel' here is a Channel, not a ManagedChannel, so it is not this code's responsibility to
-        // shut it down.
 
-        // Passing Channels to code makes code easier to test and makes it easier to reuse Channels.
         blockingStub = GreeterGrpc.newBlockingStub(channel);
         stub = GreeterGrpc.newStub(channel);
     }
 
     /**
-     * Say hello to server.
+     * request-response
      */
-    public void unaryHello() {
+    public void sayHello() {
         logger.info("Send a sayHello request ...");
 
-        HelloRequest request = HelloRequest.newBuilder().setName("name").build();
+        HelloRequest request = HelloRequest.newBuilder().setName("Allen").build();
         HelloReply response;
         try {
             response = blockingStub.sayHello(request);
@@ -71,29 +73,57 @@ public class HelloWorldClient {
         logger.info("Greeting: " + response.getMessage());
     }
 
-    public void serverStream() {
-        logger.info("Send serverStream request......");
+    /**
+     * request-stream
+     */
+    public void lotsOfReplies() {
+        logger.info("Send lotsOfReplies request......");
 
         HelloRequest request = HelloRequest.newBuilder()
-                .setName("request")
+                .setName("Allen")
                 .build();
 
-        StreamObserver<HelloReply> response = new StdoutStreamObserver("sayHelloServerStream");
+        StreamObserver<HelloReply> response = new StdoutStreamObserver("lotsOfReplies");
 
-        stub.sayHelloServerStream(request, response);
+        stub.lotsOfReplies(request, response);
     }
 
-    public void stream() {
+    /**
+     * stream-stream
+     */
+    public void bidiHello() {
 
-        logger.info("Send stream request......");
+        logger.info("send bidiHello......");
 
-        StreamObserver<HelloReply> response = new StdoutStreamObserver("sayHelloStream");
-
-        final StreamObserver<HelloRequest> request = stub.sayHelloStream(response);
+        StreamObserver<HelloReply> response = new StdoutStreamObserver("bidiHello");
+        final StreamObserver<HelloRequest> request = stub.bidiHello(response);
 
         for (int i = 0; i < 10; i++) {
             HelloRequest helloRequest = HelloRequest.newBuilder()
-                    .setName("request")
+                    .setName("Allen")
+                    .build();
+
+            logger.info("send a request:{}", helloRequest.getName());
+
+            request.onNext(helloRequest);
+        }
+        request.onCompleted();
+
+    }
+
+    /**
+     * stream-response
+     */
+    public void lotsOfGreetings() {
+
+        logger.info("send lotsOfGreetings......");
+
+        StreamObserver<HelloReply> response = new StdoutStreamObserver("lotsOfGreetings");
+        final StreamObserver<HelloRequest> request = stub.lotsOfGreetings(response);
+
+        for (int i = 0; i < 10; i++) {
+            HelloRequest helloRequest = HelloRequest.newBuilder()
+                    .setName("Allen")
                     .build();
 
             logger.info("Send a request:{}", helloRequest.getName());
@@ -105,8 +135,9 @@ public class HelloWorldClient {
     }
 
     /**
-     * Greet server. If provided, the first element of {@code args} is the name to use in the
-     * greeting. The second argument is the target server.
+     * 程序入口
+     * @param args 启动参数
+     * @throws Exception 运行异常
      */
     public static void main(String[] args) throws Exception {
         // Access a service running on the local machine on port 50051
@@ -117,9 +148,10 @@ public class HelloWorldClient {
                 .build();
         try {
             HelloWorldClient client = new HelloWorldClient(channel);
-            client.unaryHello();
-            client.serverStream();
-            client.stream();
+            client.sayHello();
+            client.lotsOfReplies();
+            client.lotsOfGreetings();
+            client.bidiHello();
 
             // pause program ...
             new CountDownLatch(1).await(10, TimeUnit.SECONDS);

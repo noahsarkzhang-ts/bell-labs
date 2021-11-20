@@ -25,7 +25,9 @@ public interface IGreeter {
 
     HelloReply sayHello(HelloRequest request);
 
-    StreamObserver<HelloRequest> sayHelloStream(StreamObserver<HelloReply> replyStream);
+    StreamObserver<HelloRequest> bidiHello(StreamObserver<HelloReply> replyStream);
 
-    void sayHelloServerStream(HelloRequest request, StreamObserver<HelloReply> replyStream);
+    void lotsOfReplies(HelloRequest request, StreamObserver<HelloReply> replyStream);
+
+    StreamObserver<HelloRequest> lotsOfGreetings(StreamObserver<HelloReply> replyStream);
 }

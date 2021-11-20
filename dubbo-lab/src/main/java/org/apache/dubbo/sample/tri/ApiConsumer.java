@@ -59,33 +59,44 @@ class ApiConsumer {
         final ApiConsumer consumer = new ApiConsumer();
         System.out.println("dubbo triple consumer started");
 
-        consumer.unaryHello();
-        consumer.stream();
-        consumer.serverStream();
+        // consumer.sayHello();
+        // consumer.bidiHello();
+        // consumer.lotsOfReplies();
+        consumer.lotsOfGreetings();
 
         System.in.read();
     }
 
-    public void serverStream() {
-        delegate.sayHelloServerStream(HelloRequest.newBuilder()
-                .setName("request")
+    public void lotsOfReplies() {
+        delegate.lotsOfReplies(HelloRequest.newBuilder()
+                .setName("allen")
                 .build(), new StdoutStreamObserver<>("serverStream"));
     }
 
-    public void stream() {
-        final StreamObserver<HelloRequest> request = delegate.sayHelloStream(new StdoutStreamObserver<>("stream"));
+    public void lotsOfGreetings() {
+        final StreamObserver<HelloRequest> request = delegate.lotsOfGreetings(new StdoutStreamObserver<>("lotsOfGreetings"));
         for (int i = 0; i < 10; i++) {
             request.onNext(HelloRequest.newBuilder()
-                    .setName("request")
+                    .setName("allen")
                     .build());
         }
         request.onCompleted();
     }
 
-    public void unaryHello() {
+    public void bidiHello() {
+        final StreamObserver<HelloRequest> request = delegate.bidiHello(new StdoutStreamObserver<>("stream"));
+        for (int i = 0; i < 10; i++) {
+            request.onNext(HelloRequest.newBuilder()
+                    .setName("allen")
+                    .build());
+        }
+        request.onCompleted();
+    }
+
+    public void sayHello() {
         try {
             final HelloReply reply = delegate.sayHello(HelloRequest.newBuilder()
-                    .setName("name")
+                    .setName("allen")
                     .build());
             TimeUnit.SECONDS.sleep(1);
             System.out.println("Reply:" + reply);

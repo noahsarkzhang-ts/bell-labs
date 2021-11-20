@@ -24,15 +24,13 @@ import org.apache.dubbo.config.RegistryConfig;
 import org.apache.dubbo.config.ServiceConfig;
 import org.apache.dubbo.config.bootstrap.DubboBootstrap;
 
-import java.util.concurrent.CountDownLatch;
-
 class ApiProvider {
     public static void main(String[] args) {
-        //new EmbeddedZooKeeper(TriSampleConstants.ZK_PORT, false).start();
+        new EmbeddedZooKeeper(TriSampleConstants.ZK_PORT, false).start();
 
         ServiceConfig<IGreeter> service = new ServiceConfig<>();
         service.setInterface(IGreeter.class);
-        service.setRef(new IGreeter1Impl());
+        service.setRef(new Greeter1Impl());
         service.setToken(true);
 
         DubboBootstrap bootstrap = DubboBootstrap.getInstance();

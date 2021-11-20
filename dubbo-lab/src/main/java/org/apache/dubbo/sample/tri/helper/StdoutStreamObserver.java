@@ -8,7 +8,6 @@ import org.apache.dubbo.common.stream.StreamObserver;
  **/
 public class StdoutStreamObserver<T> implements StreamObserver<T>, io.grpc.stub.StreamObserver<T> {
 
-
     private final String name;
 
     public StdoutStreamObserver(String name) {

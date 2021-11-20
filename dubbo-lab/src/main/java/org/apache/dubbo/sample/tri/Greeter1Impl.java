@@ -21,8 +21,9 @@ import org.apache.dubbo.common.stream.StreamObserver;
 import org.apache.dubbo.hello.HelloReply;
 import org.apache.dubbo.hello.HelloRequest;
 import org.apache.dubbo.rpc.RpcContext;
+import org.apache.dubbo.sample.tri.helper.StdoutStreamObserver;
 
-public class IGreeter1Impl implements IGreeter {
+public class Greeter1Impl implements IGreeter {
     @Override
     public HelloReply sayHello(HelloRequest request) {
 
@@ -39,7 +40,7 @@ public class IGreeter1Impl implements IGreeter {
     }
 
     @Override
-    public StreamObserver<HelloRequest> sayHelloStream(StreamObserver<HelloReply> replyStream) {
+    public StreamObserver<HelloRequest> bidiHello(StreamObserver<HelloReply> replyStream) {
         return new StreamObserver<HelloRequest>() {
             @Override
             public void onNext(HelloRequest data) {
@@ -62,12 +63,40 @@ public class IGreeter1Impl implements IGreeter {
     }
 
     @Override
-    public void sayHelloServerStream(HelloRequest request, StreamObserver<HelloReply> replyStream) {
+    public void lotsOfReplies(HelloRequest request, StreamObserver<HelloReply> replyStream) {
         for (int i = 0; i < 10; i++) {
             replyStream.onNext(HelloReply.newBuilder()
                     .setMessage(request.getName())
                     .build());
         }
         replyStream.onCompleted();
+    }
+
+    @Override
+    public StreamObserver<HelloRequest> lotsOfGreetings(StreamObserver<HelloReply> replyStream) {
+        StdoutStreamObserver stdoutStreamObserver = new StdoutStreamObserver("lotsOfGreetings");
+
+        return new StreamObserver<HelloRequest>() {
+            @Override
+            public void onNext(HelloRequest data) {
+                stdoutStreamObserver.onNext(data.getName());
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+                throwable.printStackTrace();
+                stdoutStreamObserver.onError(new IllegalStateException("Stream err"));
+            }
+
+            @Override
+            public void onCompleted() {
+                HelloReply reply = HelloReply.newBuilder().setMessage("completed,lotsOfGreetings").build();
+
+                replyStream.onNext(reply);
+                replyStream.onCompleted();
+
+                stdoutStreamObserver.onCompleted();
+            }
+        };
     }
 }

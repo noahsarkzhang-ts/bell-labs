@@ -6,7 +6,6 @@ package org.noahsark.grpc.helloworld.helper;
  **/
 public class StdoutStreamObserver<T> implements io.grpc.stub.StreamObserver<T> {
 
-
     private final String name;
 
     public StdoutStreamObserver(String name) {
