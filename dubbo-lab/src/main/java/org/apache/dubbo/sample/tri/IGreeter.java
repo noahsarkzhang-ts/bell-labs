@@ -23,11 +23,31 @@ import org.apache.dubbo.hello.HelloRequest;
 
 public interface IGreeter {
 
+    /**
+     * Request-Response
+     * @param request 请求
+     * @return 响应
+     */
     HelloReply sayHello(HelloRequest request);
 
+    /**
+     * stream-stream
+     * @param replyStream response stream
+     * @return request stream
+     */
     StreamObserver<HelloRequest> bidiHello(StreamObserver<HelloReply> replyStream);
 
+    /**
+     * request-stream
+     * @param request 请求
+     * @param replyStream 响应
+     */
     void lotsOfReplies(HelloRequest request, StreamObserver<HelloReply> replyStream);
 
+    /**
+     * stream-response
+     * @param replyStream response stream
+     * @return request stream
+     */
     StreamObserver<HelloRequest> lotsOfGreetings(StreamObserver<HelloReply> replyStream);
 }

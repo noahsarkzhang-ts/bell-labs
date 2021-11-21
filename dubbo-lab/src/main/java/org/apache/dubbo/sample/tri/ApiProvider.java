@@ -24,15 +24,19 @@ import org.apache.dubbo.config.RegistryConfig;
 import org.apache.dubbo.config.ServiceConfig;
 import org.apache.dubbo.config.bootstrap.DubboBootstrap;
 
+
 class ApiProvider {
     public static void main(String[] args) {
+        // 内置 zk 注册中心
         new EmbeddedZooKeeper(TriSampleConstants.ZK_PORT, false).start();
 
+        // 服务发布定义
         ServiceConfig<IGreeter> service = new ServiceConfig<>();
         service.setInterface(IGreeter.class);
         service.setRef(new Greeter1Impl());
         service.setToken(true);
 
+        // 启动服务
         DubboBootstrap bootstrap = DubboBootstrap.getInstance();
         bootstrap.application(new ApplicationConfig("demo-provider"))
                 .registry(new RegistryConfig(TriSampleConstants.ZK_ADDRESS))

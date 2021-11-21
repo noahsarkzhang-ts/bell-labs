@@ -33,7 +33,11 @@ import java.util.concurrent.TimeUnit;
 class ApiConsumer {
     private final IGreeter delegate;
 
+    /**
+     * 定义服务消费方
+     */
     ApiConsumer() {
+        // 定义一个服务引用
         ReferenceConfig<IGreeter> ref = new ReferenceConfig<>();
         ref.setInterface(IGreeter.class);
         ref.setCheck(false);
@@ -52,27 +56,22 @@ class ApiConsumer {
                 .reference(ref)
                 .start();
 
+        // 生成代理对象
         this.delegate = ref.get();
     }
 
-    public static void main(String[] args) throws IOException {
-        final ApiConsumer consumer = new ApiConsumer();
-        System.out.println("dubbo triple consumer started");
-
-        // consumer.sayHello();
-        // consumer.bidiHello();
-        // consumer.lotsOfReplies();
-        consumer.lotsOfGreetings();
-
-        System.in.read();
-    }
-
+    /**
+     * request-stream
+     */
     public void lotsOfReplies() {
         delegate.lotsOfReplies(HelloRequest.newBuilder()
                 .setName("allen")
                 .build(), new StdoutStreamObserver<>("serverStream"));
     }
 
+    /**
+     * stream-response
+     */
     public void lotsOfGreetings() {
         final StreamObserver<HelloRequest> request = delegate.lotsOfGreetings(new StdoutStreamObserver<>("lotsOfGreetings"));
         for (int i = 0; i < 10; i++) {
@@ -83,6 +82,9 @@ class ApiConsumer {
         request.onCompleted();
     }
 
+    /**
+     * stream-stream
+     */
     public void bidiHello() {
         final StreamObserver<HelloRequest> request = delegate.bidiHello(new StdoutStreamObserver<>("stream"));
         for (int i = 0; i < 10; i++) {
@@ -93,6 +95,9 @@ class ApiConsumer {
         request.onCompleted();
     }
 
+    /**
+     * request-response
+     */
     public void sayHello() {
         try {
             final HelloReply reply = delegate.sayHello(HelloRequest.newBuilder()
@@ -103,6 +108,23 @@ class ApiConsumer {
         } catch (Throwable t) {
             t.printStackTrace();
         }
+    }
+
+    /**
+     * 程序入口
+     * @param args 入口参数
+     * @throws IOException 异常
+     */
+    public static void main(String[] args) throws IOException {
+        final ApiConsumer consumer = new ApiConsumer();
+        System.out.println("dubbo triple consumer started");
+
+        consumer.sayHello();
+        consumer.bidiHello();
+        consumer.lotsOfReplies();
+        consumer.lotsOfGreetings();
+
+        System.in.read();
     }
 
 }
