@@ -27,9 +27,15 @@ public class FireNForgetClient {
 
     private static final Logger LOG = LoggerFactory.getLogger(FireNForgetClient.class);
 
+    /**
+     * 客户端 socket
+     */
     private final RSocket socket;
     private final List<Float> data;
 
+    /**
+     * 构建客户端
+     */
     public FireNForgetClient() {
         this.socket = RSocketFactory.connect()
                 .transport(TcpClientTransport.create("localhost", TCP_PORT))

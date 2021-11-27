@@ -25,6 +25,11 @@ public class ReqResClient {
                 .block();
     }
 
+    /**
+     * 发送一个字符串到服务器，并同步等待结果
+     * @param string 参数
+     * @return 结果
+     */
     public String callBlocking(String string) {
         return socket
                 .requestResponse(DefaultPayload.create(string))

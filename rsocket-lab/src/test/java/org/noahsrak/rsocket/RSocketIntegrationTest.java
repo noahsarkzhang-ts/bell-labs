@@ -36,6 +36,9 @@ public class RSocketIntegrationTest {
         server.dispose();
     }
 
+    /**
+     * 测试 Request-Response
+     */
     @Test
     public void whenSendingAString_thenRevceiveTheSameString() {
         ReqResClient client = new ReqResClient();
@@ -46,6 +49,9 @@ public class RSocketIntegrationTest {
         client.dispose();
     }
 
+    /**
+     * 测试 FireAndForget
+     */
     @Test
     public void whenSendingFireForget() {
         FireNForgetClient fnfClient = new FireNForgetClient();
@@ -62,6 +68,14 @@ public class RSocketIntegrationTest {
         }
     }
 
+    /**
+     * 测试 Request-Stream
+     * 1. 通过 FireNForgetClient 向服务器定时发送 Float 数据；
+     * 2. 服务器接收数据，向 dataPublisher 发布数据；
+     * 3. 通过 ReqStreamClient 向服务器请求流数据，数据来自 dataPublisher；
+     * 4. ReqStreamClient 订阅来自服务器的数据并处理；
+     * 5. 通过 dataPublisher 实现了将 FireNForgetClient 产生的数据发送给了 ReqStreamClient。
+     */
     @Test
     public void whenSendingStream_thenReceiveTheSameStream() {
         // create the client that pushes data to the server and start sending
@@ -101,6 +115,9 @@ public class RSocketIntegrationTest {
         assertEquals("Wrong data count received", data.size(), dataReceived.size());
     }
 
+    /**
+     * Stream-Stream
+     */
     @Test
     public void whenRunningChannelGame_thenLogTheResults() {
         ChannelClient client = new ChannelClient();

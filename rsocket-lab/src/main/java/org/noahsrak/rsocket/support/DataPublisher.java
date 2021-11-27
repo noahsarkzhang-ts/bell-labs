@@ -19,18 +19,19 @@ public class DataPublisher implements Publisher<Payload> {
         this.subscribers.add(subscriber);
     }
 
+    /**
+     * 发布数据
+     * @param payload 数据
+     */
     public void publish(Payload payload) {
 
         subscribers.stream().forEach(subscriber -> subscriber.onNext(payload));
-        /*if (subscriber != null) {
-            subscriber.onNext(payload);
-        }*/
     }
 
+    /**
+     * 数据结束
+     */
     public void complete() {
-        /*if (subscriber != null) {
-            subscriber.onComplete();
-        }*/
 
         subscribers.stream().forEach(subscriber -> subscriber.onComplete());
     }

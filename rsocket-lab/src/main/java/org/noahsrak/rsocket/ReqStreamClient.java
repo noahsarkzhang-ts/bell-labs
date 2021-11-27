@@ -26,6 +26,10 @@ public class ReqStreamClient {
                 .block();
     }
 
+    /**
+     * 返回一个 Float 列表，一个响应一个 Float
+     * @return Float 数字
+     */
     public Flux<Float> getDataStream() {
         return socket
                 .requestStream(DefaultPayload.create(DATA_STREAM_NAME))

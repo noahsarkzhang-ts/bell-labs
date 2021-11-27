@@ -30,11 +30,15 @@ public class Server {
 
     private static final Logger LOG = LoggerFactory.getLogger(Server.class);
 
+    /**
+     * RSocket Server
+     */
     private final Disposable server;
-    private final DataPublisher dataPublisher;
-    private final GameController gameController;
+    private DataPublisher dataPublisher;
+    private GameController gameController;
 
     public Server() {
+        // 初始化服务器，并向器添加服务实现
         this.server = RSocketFactory.receive()
                 .acceptor((setupPayload, reactiveSocket) -> Mono.just(new RSocketImpl()))
                 .transport(TcpServerTransport.create("localhost", TCP_PORT))
@@ -42,6 +46,13 @@ public class Server {
                 .doOnNext(x -> LOG.info("Server started"))
                 .subscribe();
 
+        initService();
+    }
+
+    /**
+     * 初始化服务
+     */
+    private void initService() {
         this.gameController = new GameController("Server Player");
         this.dataPublisher = new DataPublisher();
 
@@ -79,7 +90,7 @@ public class Server {
 
         /**
          * Handle Request/Response messages
-         *
+         * 将请求数据返回给客户端
          * @param payload Message payload
          * @return payload response
          */
@@ -95,7 +106,7 @@ public class Server {
 
         /**
          * Handle Fire-and-Forget messages
-         *
+         * 将数据发布到 dataPublisher 中
          * @param payload Message payload
          * @return nothing
          */
@@ -111,7 +122,7 @@ public class Server {
 
         /**
          * Handle Request/Stream messages. Each request returns a new stream.
-         *
+         * 使用 dataPublisher 作为响应，数据来源自 fireAndForget 中的数据
          * @param payload Payload that can be used to determine which stream to return
          * @return Flux stream containing simulated measurement data
          */

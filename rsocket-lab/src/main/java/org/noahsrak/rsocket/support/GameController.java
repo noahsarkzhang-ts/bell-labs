@@ -13,10 +13,10 @@ import java.util.List;
 import static org.noahsrak.rsocket.support.Constants.SHOT_COUNT;
 
 /**
- * @author: zhangxt
- * @version:
- * @date: 2021/11/1
- */
+ * GameController
+ * @author zhangxt
+ * @date 2021/11/27 17:38
+ **/
 public class GameController implements Publisher<Payload> {
 
     private static final Logger LOG = LoggerFactory.getLogger(GameController.class);

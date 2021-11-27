@@ -15,9 +15,21 @@ import static org.noahsrak.rsocket.support.Constants.TCP_PORT;
  */
 public class ChannelClient {
 
+    /**
+     * 客户端 socket
+     */
     private final RSocket socket;
+
+    /**
+     * 发送流及处理流
+     * 发送流：fireAtWill 方法，线程定时发送数据
+     * 接收流：processPayload 方法，处理响应数据
+     */
     private final GameController gameController;
 
+    /**
+     * 构建客户端
+     */
     public ChannelClient() {
         this.socket = RSocketFactory.connect()
                 .transport(TcpClientTransport.create("localhost", TCP_PORT))
@@ -27,6 +39,9 @@ public class ChannelClient {
         this.gameController = new GameController("Client Player");
     }
 
+    /**
+     * 双向数据流
+     */
     public void playGame() {
         socket.requestChannel(Flux.from(gameController))
                 .doOnNext(gameController::processPayload)
