@@ -25,6 +25,8 @@ public class NacosSdkClient {
         String group = "boss";
         Properties properties = new Properties();
         properties.put(PropertyKeyConst.SERVER_ADDR, serverAddr);
+        properties.put(PropertyKeyConst.USERNAME,"admin");
+        properties.put(PropertyKeyConst.PASSWORD,"admin");
         ConfigService configService = NacosFactory.createConfigService(properties);
         String content = configService.getConfig(dataId, group, 5000);
         System.out.println(content);

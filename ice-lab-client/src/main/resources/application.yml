@@ -1,0 +1,8 @@
+ice:
+  adapter:
+    endpoints: tcp -h localhost -p 33001
+
+logging:
+  config: classpath:logback-spring.xml
+  file:
+    name: logs/ice-lab.log

@@ -25,6 +25,9 @@
         <module>compress-lab</module>
         <module>grpc-lab</module>
         <module>dubbo-lab</module>
+        <module>spring-shell-lab</module>
+        <module>ice-lab</module>
+        <module>ice-lab-client</module>
     </modules>
 
     <name>bell-labs</name>
