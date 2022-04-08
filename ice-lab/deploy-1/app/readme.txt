@@ -1,0 +1,1 @@
+icegridadmin --Ice.Config=config.cfg
