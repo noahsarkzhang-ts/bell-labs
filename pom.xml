@@ -28,6 +28,7 @@
         <module>spring-shell-lab</module>
         <module>ice-lab</module>
         <module>ice-lab-client</module>
+        <module>canal-lab</module>
     </modules>
 
     <name>bell-labs</name>
