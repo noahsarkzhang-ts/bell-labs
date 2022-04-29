@@ -29,6 +29,7 @@
         <module>ice-lab</module>
         <module>ice-lab-client</module>
         <module>canal-lab</module>
+        <module>hystrix-lab</module>
     </modules>
 
     <name>bell-labs</name>
