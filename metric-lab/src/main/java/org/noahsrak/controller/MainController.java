@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author: noahsark
  * @version:
@@ -30,7 +32,7 @@ public class MainController {
 
     @RequestMapping("/hello")
     @ResponseBody
-    public String helloWorld() {
+    public String helloWorld() throws InterruptedException {
 
 //        requestMeter.mark();
 //
@@ -40,6 +42,7 @@ public class MainController {
 
         final Timer.Context context = responses.time();
         try {
+            TimeUnit.MILLISECONDS.sleep(30);
             return "Hello World";
         } finally {
             context.stop();

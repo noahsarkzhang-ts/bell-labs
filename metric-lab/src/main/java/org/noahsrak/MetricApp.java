@@ -1,13 +1,13 @@
 package org.noahsrak;
 
-import com.codahale.metrics.ConsoleReporter;
-import com.codahale.metrics.Slf4jReporter;
-import org.noahsrak.util.Slf4jHstReporter;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
+        import com.codahale.metrics.ConsoleReporter;
+        import com.codahale.metrics.Slf4jReporter;
+        import org.noahsrak.util.Slf4jHstReporter;
+        import org.springframework.boot.SpringApplication;
+        import org.springframework.boot.autoconfigure.SpringBootApplication;
+        import org.springframework.context.ApplicationContext;
 
-import java.util.concurrent.TimeUnit;
+        import java.util.concurrent.TimeUnit;
 
 /**
  * Hello world!
@@ -21,7 +21,7 @@ public class MetricApp {
         ConsoleReporter reporter = ctx.getBean(ConsoleReporter.class);
         reporter.start(15, TimeUnit.SECONDS);
 
-        Slf4jHstReporter logReporter = ctx.getBean(Slf4jHstReporter.class);
-        logReporter.start(15, TimeUnit.SECONDS);
+        /*Slf4jHstReporter logReporter = ctx.getBean(Slf4jHstReporter.class);
+        logReporter.start(15, TimeUnit.SECONDS);*/
     }
 }

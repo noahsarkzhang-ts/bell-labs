@@ -2,6 +2,7 @@ package org.noahsark;
 
 import org.noahsark.protostuff.Person;
 import org.noahsark.protostuff.ProtostuffUtils;
+import org.noahsark.protostuff.Result;
 
 public class ProtostuffUtilsTest {
 
@@ -24,5 +25,20 @@ public class ProtostuffUtilsTest {
         // 输出 Person 对象数据
         System.out.println("person:\n" + john);
 
+        testResult(person);
+
+    }
+
+    private static void testResult(Person person) {
+        Result result = new Result(1,"success", person);
+
+        // 序列化数据
+        byte [] message = ProtostuffUtils.serialize(result);
+
+        // 反序列化数据
+        Result desResult = ProtostuffUtils.deserialize(message, Result.class);
+
+        // 输出 Person 对象数据
+        System.out.println("result:\n" + desResult);
     }
 }

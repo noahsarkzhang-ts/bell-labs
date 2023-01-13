@@ -16,11 +16,11 @@ public class RSATest {
 
     public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeySpecException {
         buildRsaKeys();
-        //BuildCipher();
+        BuildCipher();
     }
 
     public static void BuildCipher() throws InvalidKeySpecException, NoSuchAlgorithmException {
-        String ciphertext = RSAUtils.privateEncrypt("123456789", RSAUtils.getPrivateKey(privateKey));
+        String ciphertext = RSAUtils.privateEncrypt("0123456789012345678901234567890123456789012345678901234567890123456789", RSAUtils.getPrivateKey(privateKey));
         System.out.println(ciphertext);
         System.out.println(RSAUtils.publicDecrypt(ciphertext, RSAUtils.getPublicKey(publicKey)));
     }
