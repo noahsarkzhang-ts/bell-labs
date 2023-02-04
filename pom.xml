@@ -31,6 +31,7 @@
         <module>canal-lab</module>
         <module>hystrix-lab</module>
         <module>docker-lab</module>
+        <module>fastjar-lab</module>
     </modules>
 
     <name>bell-labs</name>
