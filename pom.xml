@@ -32,6 +32,7 @@
         <module>hystrix-lab</module>
         <module>docker-lab</module>
         <module>fastjar-lab</module>
+        <module>ssl-lab</module>
     </modules>
 
     <name>bell-labs</name>
